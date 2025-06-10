@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   try {
     const user = await User.findOne({ username });
-    if (!user) return res.status(400).json({ message: 'Utilisateur introuvable' });
+    if (!user) return res.status(400).json({ message: 'Utilisateur pas retrouver' });
 
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) return res.status(400).json({ message: 'Mot de passe incorrect' });
